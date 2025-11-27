@@ -34,12 +34,12 @@ service:
 
 
 ingress:
-  enabled: false
-  className: ""
+  enabled: true
+  className: "istio"
   annotations: {}
 
   hosts:
-    - host: chart-example.local
+    - host: test.local
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -77,6 +77,13 @@ autoscaling:
   minReplicas: 1
   maxReplicas: 5
   targetCPUUtilizationPercentage: 80
+
+pvc:
+  enabled: true
+  name: django-static-pvc
+  storageClassName: longhorn
+  accessMode: ReadWriteOnce
+  size: 5Gi
 
 volumes:
   - name: django-static-storage
