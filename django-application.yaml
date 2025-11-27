@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: django-ledger-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/fred4impact/django-ledger-chart-demo.git
+    targetRevision: HEAD
+    path: django-ledger-chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  
