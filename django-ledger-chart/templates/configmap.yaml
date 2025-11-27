@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "mychart.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
+data:
+  DB_HOST: {{ .Values.config.DB_HOST | quote }}
+  DB_PORT: {{ .Values.config.DB_PORT | quote }}
+  DB_NAME: {{ .Values.config.DB_NAME | quote }}
+  DEBUG: {{ .Values.config.DEBUG | quote }}
+  STATIC_ROOT: {{ .Values.config.STATIC_ROOT | quote }}
+  STATIC_URL: {{ .Values.config.STATIC_URL | quote }}
+  MEDIA_ROOT: {{ .Values.config.MEDIA_ROOT | quote }}
+  MEDIA_URL: {{ .Values.config.MEDIA_URL | quote }}
+  CSRF_TRUSTED_ORIGINS: {{ .Values.config.CSRF_TRUSTED_ORIGINS | quote }}
+  SECURE_SSL_REDIRECT: {{ .Values.config.SECURE_SSL_REDIRECT | quote }}
+  SESSION_COOKIE_SECURE: {{ .Values.config.SESSION_COOKIE_SECURE | quote }}
+  CSRF_COOKIE_SECURE: {{ .Values.config.CSRF_COOKIE_SECURE | quote }}
+  DATABASE_URL: {{ .Values.config.DATABASE_URL | quote }}
+  DJANGO_SETTINGS_MODULE: {{ .Values.config.DJANGO_SETTINGS_MODULE | quote }}
+  ALLOWED_HOSTS: {{ .Values.config.ALLOWED_HOSTS | quote }}
+
